@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="stye.css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+        <title>To-do list</title>
+    </head>
+    
+    
+    <body>
+        <h1>My to-do list</h1>
+        <div id="form">
+            <center>
+            <input type="text" id="new-task-input" placeholer="What needs to be done?">
+            <div onclick="addTask()" id="button" id="add-task-button">Add task</div>
+            </center>
+        </div>
+        
+        <ul id="list">
+        </ul>
+        
+        
+        
+        <!-- -------JavaScript------- -->
+        <script>
+            var button = document.getElementById("add-task-button");
+            var input = document.getElementById("new-task-input");
+            var list = document.getElementById("list");
+            
+            function addTask() {
+                var taskName = document.getElementById("new-task-input").value;
+                var text = document.createTextNode(taskName);
+                var li = document.createElement("li");
+                li.appendChild(text);
+                
+                if (taskName.length != "") {
+                    var list = document.getElementById("list").appendChild(li);
+                }
+                
+                document.getElementById("new-task-input").value = "";
+                li.onclick = removeItem;
+            }
+            
+            function removeItem(item) {
+                item.target.parentElement.removeChild(item.target);
+            }
+        </script>
+    </body>
+</html>
